@@ -1,0 +1,203 @@
+ruby-flexmock (2.3.6-7) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>  Wed, 20 Jul 2022 04:10:54 -0400
+
+ruby-flexmock (2.3.6-7) unstable; urgency=medium
+
+  * Team upload.
+  * d/control (Depends): Use ${ruby:Depends}.
+  * d/copyright: Add Upstream-Contact field.
+    (Copyright): Add team.
+  * d/rules: Use gem installation layout.
+  * d/patches/0003-Fix-compatibility-with-Ruby-3.0.patch: Add patch.
+    - Fix build with Ruby 3.0 (closes: #996229).
+  * d/patches/series: Enable new patch.
+  * d/upstream/metadata: Add missing fields.
+
+ -- Daniel Leidert <dleidert@debian.org>  Mon, 22 Nov 2021 01:50:53 +0100
+
+ruby-flexmock (2.3.6-6) unstable; urgency=medium
+
+  [ Cédric Boutillier ]
+  * [ci skip] Update team name
+  * [ci skip] Add .gitattributes to keep unwanted files out of the source
+    package
+
+  [ Hideki Yamane ]
+  * debian/control
+    - Set Standards-Version: 4.6.0
+  * debian/watch
+    - Fix watch URL
+
+ -- Hideki Yamane <henrich@debian.org>  Fri, 29 Oct 2021 23:35:09 +0900
+
+ruby-flexmock (2.3.6-5) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Use secure copyright file specification URI.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Hideki Yamane ]
+  * debian/control
+    - Set debhelper-compat (= 13)
+    - Set Standards-Version: 4.5.0
+
+ -- Hideki Yamane <henrich@debian.org>  Sat, 06 Jun 2020 00:46:44 +0900
+
+ruby-flexmock (2.3.6-4) unstable; urgency=medium
+
+  * debian/control: add Multi-Arch: foreign
+  * debian/watch: use v4
+
+ -- Hideki Yamane <henrich@debian.org>  Sat, 02 Nov 2019 19:06:57 +0900
+
+ruby-flexmock (2.3.6-3) unstable; urgency=medium
+
+  * debian/control
+    - set Standards-Version: 4.4.1
+    - set "Depends: ruby:any" as "annotate a dependency with :any"
+
+ -- Hideki Yamane <henrich@debian.org>  Sat, 05 Oct 2019 01:03:17 +0900
+
+ruby-flexmock (2.3.6-2) unstable; urgency=medium
+
+  [ Utkarsh Gupta ]
+  * Add salsa-ci.yml
+
+  [ Hideki Yamane ]
+  * debian/salsa-ci.yml
+    - disable unnecessary tests
+  * debian/control
+    - add Rules-Requires-Root: no
+    - drop Build-Depends: debhelper, just specify debhelper-compat
+    - set Standards-Version: 4.4.0
+
+ -- Hideki Yamane <henrich@debian.org>  Sun, 22 Sep 2019 08:00:25 +0900
+
+ruby-flexmock (2.3.6-1) unstable; urgency=medium
+
+  [ Cédric Boutillier ]
+  * Run wrap-and-sort on packaging files
+
+  [ Antonio Terceiro ]
+  * Remove myself from Uploaders:
+
+  [ Hideki Yamane ]
+  * New upstream version 2.3.6
+  * debian/control
+    - use dh12
+    - set Standards-Version: 4.3.0
+    - update Vcs-* to use salsa.debian.org
+    - add myself to Uploaders
+  * debian/compat
+    - drop it
+  * debian/patches
+    - refresh patches
+
+ -- Hideki Yamane <henrich@debian.org>  Tue, 09 Apr 2019 22:48:32 +0900
+
+ruby-flexmock (2.0.4-1) unstable; urgency=medium
+
+  * Team upload
+  * Imported Upstream version 2.0.4
+  * d/control:
+      Update Vcs-* fields (use https everywhere)
+      Bump Standards-Version to 3.9.7 (no changes)
+  * d/copyright: Fix upstream URL
+
+ -- Sebastien Badia <seb@sebian.fr>  Wed, 02 Mar 2016 17:33:53 -0300
+
+ruby-flexmock (2.0.0~rc1-1) unstable; urgency=medium
+
+  [ Cédric Boutillier ]
+  * debian/control: remove obsolete DM-Upload-Allowed flag
+  * use canonical URI in Vcs-* fields
+  * debian/copyright: use DEP5 copyright-format/1.0 official URL for Format
+    field
+
+  [ Jonas Genannt ]
+  * d/control: removed transitional packages
+  * d/control: bumped standards version to 3.9.5 (no changes needed)
+  * added ruby-rspec, ruby-minitest, needed for tests on build time
+
+  [ Roberto C. Sanchez ]
+  * Remove /me from uploaders
+
+  [ Jonas Genannt ]
+  * refresh debian/ with dh-make-ruby
+  * d/copyright: updated format and years
+
+  [ Antonio Terceiro ]
+  * New upstream release (Closes: #794171)
+  * debian/watch: point at github
+  * Update packaging with a new dh-make-ruby run
+  * added debian/patches/0001-gemspec-skip-git-usage.patch
+  * improve debian/copyright
+  * added debian/patches/0002-gemspec-don-t-assume-lib-exists.patc
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 15 Sep 2015 13:38:00 -0300
+
+ruby-flexmock (0.9.0-1) unstable; urgency=low
+
+  * Migrate to gem2deb and to the new Ruby packaging and naming standard.
+    Added transitional packages.
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 19 Nov 2011 15:03:22 -0200
+
+libflexmock-ruby (0.8.6-2) unstable; urgency=low
+
+  * Bump standards version to 3.8.4 (no changes)
+  * Switch to Ruby 1.9.1. Closes: #569854.
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Sat, 20 Feb 2010 23:16:50 +0100
+
+libflexmock-ruby (0.8.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump standards version to 3.8.3 (no changes)
+  * Change section to ruby (to line up with archive override file)
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Thu, 27 Aug 2009 18:59:33 -0400
+
+libflexmock-ruby (0.8.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump Standards-Version to 3.8.1 (no changes).
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Tue, 17 Mar 2009 14:20:34 -0400
+
+libflexmock-ruby (0.8.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Mon, 09 Mar 2009 14:21:45 -0400
+
+libflexmock-ruby (0.8.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Tue, 23 Sep 2008 10:06:02 -0400
+
+libflexmock-ruby (0.8.2-2) unstable; urgency=high
+
+  * Build-Depends on ruby-pkg-tools >= 0.14 and install 1.9 module files
+    into /usr/lib/ruby/1.9.0/ (Closes: #484614)
+  * Bump Standards-Version to 3.8.0 (no changes).
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Tue, 17 Jun 2008 01:45:47 -0400
+
+libflexmock-ruby (0.8.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Tue, 03 Jun 2008 23:50:11 -0400
+
+libflexmock-ruby (0.8.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #462030)
+
+ -- Roberto C. Sanchez <roberto@connexer.com>  Tue, 15 Apr 2008 11:11:08 -0400

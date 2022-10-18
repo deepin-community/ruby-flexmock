@@ -1,0 +1,18 @@
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Tue, 15 Sep 2015 13:40:25 -0300
+Subject: gemspec: don't assume lib/ exists
+
+This fixes running the test suite under autopkgtest
+---
+ flexmock.gemspec | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/flexmock.gemspec
++++ b/flexmock.gemspec
+@@ -1,4 +1,5 @@
+-require './lib/flexmock/version.rb'
++$LOAD_PATH << 'lib'
++require 'flexmock/version.rb'
+ spec = Gem::Specification.new do |s|
+   #### Basic information.
+   s.name = 'flexmock'

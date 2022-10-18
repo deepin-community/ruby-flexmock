@@ -1,0 +1,3 @@
+0001-gemspec-skip-git-usage.patch
+0002-gemspec-don-t-assume-lib-exists.patch
+0003-Fix-compatibility-with-Ruby-3.0.patch

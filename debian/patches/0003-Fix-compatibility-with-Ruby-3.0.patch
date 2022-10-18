@@ -1,0 +1,65 @@
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Sat, 23 Jan 2021 18:20:08 +0000
+Subject: Patch to support ruby 3.0
+
+- Use binding.source_location for test
+- Properly accept argument and keywords
+- Relax error message on test a bit
+
+Kudos and thanks to the Fedora project.
+
+Acked-By: Daniel Leidert <dleidert@debian.org>
+Origin: https://src.fedoraproject.org/rpms/rubygem-flexmock/blob/rawhide/f/rubygem-flexmock-2.3.6-workaround-relax-error-message.patch
+Origin: https://src.fedoraproject.org/rpms/rubygem-flexmock/blob/rawhide/f/rubygem-flexmock-2.3.6-testsuite-binding-source.patch
+Origin: https://src.fedoraproject.org/rpms/rubygem-flexmock/blob/rawhide/f/rubygem-flexmock-2.3.6-accept-keywords.patch
+Bug-Debian: https://bugs.debian.org/996229
+Forwarded: https://github.com/doudou/flexmock/pull/20
+---
+ lib/flexmock/composite_expectation.rb | 4 ++--
+ test/partial_mock_test.rb             | 3 ++-
+ test/test_helper.rb                   | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/lib/flexmock/composite_expectation.rb b/lib/flexmock/composite_expectation.rb
+index 370046f..fbc8e54 100644
+--- a/lib/flexmock/composite_expectation.rb
++++ b/lib/flexmock/composite_expectation.rb
+@@ -16,9 +16,9 @@ class FlexMock
+     end
+ 
+     # Apply the constraint method to all expectations in the composite.
+-    def method_missing(sym, *args, &block)
++    def method_missing(sym, *args, **keywords, &block)
+       @expectations.each do |expectation|
+-        expectation.send(sym, *args, &block)
++        expectation.send(sym, *args, **keywords, &block)
+       end
+       self
+     end
+diff --git a/test/partial_mock_test.rb b/test/partial_mock_test.rb
+index 2cee769..c7c1b78 100644
+--- a/test/partial_mock_test.rb
++++ b/test/partial_mock_test.rb
+@@ -622,7 +622,8 @@ class TestStubbing < Minitest::Test
+     exception = assert_raises(NameError) do
+         obj.mocked_method
+     end
+-    assert_equal "undefined method `does_not_exist' for #{obj}", exception.message
++    assert(/undefined method `does_not_exist' for #<#<Class:/ === exception.message,
++        "expected #{exception.message} to match /undefined method `does_not_exist' for #<#<Class:/")
+   end
+ 
+   def test_it_checks_whether_mocks_are_forbidden_before_forwarding_the_call
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index 9eb3310..c4fd622 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -50,7 +50,7 @@ class FlexMock
+     # added.
+     def assert_mock_failure(klass, options={}, &block)
+       ex = assert_failure(klass, options, &block)
+-      file = eval("__FILE__", block.binding)
++      file = block.binding.source_location.first
+       assert_matching_line(ex, file, options)
+     end
+ 

@@ -1,0 +1,30 @@
+Source: ruby-flexmock
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Hideki Yamane <henrich@debian.org>
+Build-Depends: bundler,
+               debhelper-compat (= 13),
+               gem2deb,
+               rake,
+               ruby-minitest,
+               ruby-rspec
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-flexmock.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-flexmock
+Homepage: https://github.com/doudou/flexmock
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-flexmock
+Architecture: all
+Multi-Arch: foreign
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${ruby:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: simple and flexible mock objects for testing
+ FlexMock is a extremely simple mock object class compatible
+ with the Test::Unit framework. Although the FlexMock's
+ interface is simple, it is very flexible.
